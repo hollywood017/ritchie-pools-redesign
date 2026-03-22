@@ -285,33 +285,93 @@
     }
     .area-tag:hover { border-color: var(--aqua); color: var(--white); }
     .area-tag-dot { width: 6px; height: 6px; background: var(--aqua); border-radius: 50%; flex-shrink: 0; }
-    .map-box {
-      background: var(--deep-blue); border: 1px solid rgba(200,169,110,.12);
-      border-radius: 4px; padding: 3rem; min-height: 380px;
-      position: relative; overflow: hidden;
-      display: flex; align-items: center; justify-content: center;
+    /* ── OBX SVG MAP ── */
+    .obx-map-wrap {
+      position: relative;
+      width: 100%;
+      border-radius: 4px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #071526 0%, #0d2140 100%);
+      border: 1px solid rgba(200,169,110,.15);
+      box-shadow: 0 30px 80px rgba(0,0,0,.5);
     }
-    .map-box::before {
-      content: ''; position: absolute; inset: 0;
-      background: radial-gradient(ellipse at 50% 50%, rgba(14,125,180,.18) 0%, transparent 70%);
+    .obx-map-wrap svg { display: block; width: 100%; height: auto; }
+    /* Water labels */
+    .map-water-label {
+      font-family: var(--font-display);
+      font-style: italic;
+      fill: rgba(57,192,224,.35);
+      font-size: 11px;
+      letter-spacing: 2px;
     }
-    .map-watermark {
-      position: absolute; font-family: var(--font-display);
-      font-size: 7rem; font-weight: 900;
-      color: rgba(57,192,224,.06); letter-spacing: -.04em;
+    /* Island body */
+    .obx-island { fill: #1a3a5c; stroke: rgba(57,192,224,.4); stroke-width: 1.5; }
+    /* Town zones — highlight on hover */
+    .town-zone {
+      fill: transparent;
+      cursor: pointer;
+      transition: fill .3s;
     }
-    .map-pin {
-      position: absolute; background: var(--pool-blue);
-      color: var(--white); font-size: .63rem; letter-spacing: .1em;
-      text-transform: uppercase; padding: .35rem .75rem; border-radius: 2px;
-      white-space: nowrap; box-shadow: 0 4px 15px rgba(0,0,0,.3);
+    .town-zone:hover { fill: rgba(14,125,180,.25); }
+    /* Town pin dots */
+    .pin-dot-outer {
+      fill: none;
+      stroke: var(--gold, #c8a96e);
+      stroke-width: 1.5;
+      opacity: .7;
+      animation: pinPulse 2.5s ease-in-out infinite;
     }
-    .map-pin::after {
-      content: ''; position: absolute; bottom: -5px; left: 50%; transform: translateX(-50%);
-      border: 3px solid transparent; border-top-color: var(--pool-blue); border-bottom: none;
+    .pin-dot-inner { fill: #c8a96e; }
+    .pin-dot-outer.d2 { animation-delay: .4s; }
+    .pin-dot-outer.d3 { animation-delay: .8s; }
+    .pin-dot-outer.d4 { animation-delay: 1.2s; }
+    .pin-dot-outer.d5 { animation-delay: 1.6s; }
+    .pin-dot-outer.d6 { animation-delay: 2.0s; }
+    @keyframes pinPulse {
+      0%,100% { r: 7; opacity: .5; }
+      50% { r: 11; opacity: 0; }
     }
-    /* Map center text hidden — pins convey the same info without overlap */
-    .map-center-text { display: none; }
+    /* Town labels */
+    .town-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 10.5px;
+      font-weight: 500;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+      fill: #f8f5f0;
+      pointer-events: none;
+    }
+    .town-label.active { fill: #c8a96e; font-weight: 700; }
+    /* HQ star badge */
+    .hq-badge rect { fill: #c8a96e; rx: 2; }
+    .hq-text { fill: #0a1628; font-size: 7px; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; font-family: 'DM Sans', sans-serif; }
+    /* Route line down the island */
+    .route-line {
+      stroke: rgba(57,192,224,.35);
+      stroke-width: 1.5;
+      stroke-dasharray: 4 4;
+      fill: none;
+      animation: dashMove 20s linear infinite;
+    }
+    @keyframes dashMove { to { stroke-dashoffset: -100; } }
+    /* Compass */
+    .compass-text { fill: rgba(248,245,240,.5); font-size: 9px; font-family: 'DM Sans', sans-serif; letter-spacing: .08em; }
+    /* Ocean shimmer lines */
+    .ocean-line {
+      stroke: rgba(57,192,224,.08);
+      stroke-width: 1;
+      fill: none;
+      animation: oceanShimmer 6s ease-in-out infinite;
+    }
+    .ocean-line:nth-child(2) { animation-delay: -2s; }
+    .ocean-line:nth-child(3) { animation-delay: -4s; }
+    @keyframes oceanShimmer {
+      0%,100% { opacity: .4; transform: translateX(0); }
+      50% { opacity: 1; transform: translateX(3px); }
+    }
+    /* Scale bar */
+    .scale-line { stroke: rgba(248,245,240,.3); stroke-width: 1.5; fill: none; }
+    .scale-text { fill: rgba(248,245,240,.4); font-size: 8px; font-family: 'DM Sans',sans-serif; }
 
     /* ── RESPONSIVE ── */
     @media(max-width:940px){
@@ -640,18 +700,194 @@
       <a href="get-a-quote.html" class="btn-primary" style="margin-top:2rem">Request Service</a>
     </div>
     <div class="reveal-r">
-      <div class="map-box">
-        <div class="map-watermark">OBX</div>
-        <span class="map-pin" style="top:12%;left:35%">Corolla</span>
-        <span class="map-pin" style="top:26%;right:22%">Duck</span>
-        <span class="map-pin" style="top:40%;left:28%">Southern Shores</span>
-        <span class="map-pin" style="top:54%;right:28%">Kitty Hawk</span>
-        <span class="map-pin" style="top:66%;left:30%">Kill Devil Hills ★</span>
-        <span class="map-pin" style="top:80%;right:25%">Nags Head</span>
-        <div class="map-center-text">
-          <h3>Full OBX Coverage</h3>
-          <p>Corolla to Nags Head — we've got you</p>
-        </div>
+      <div class="obx-map-wrap">
+        <svg viewBox="0 0 420 580" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Map of Outer Banks service area from Corolla to Nags Head">
+          <defs>
+            <linearGradient id="oceanGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#071018"/>
+              <stop offset="100%" stop-color="#0a1e35"/>
+            </linearGradient>
+            <linearGradient id="soundGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#0a1e35"/>
+              <stop offset="100%" stop-color="#071018"/>
+            </linearGradient>
+            <linearGradient id="islandGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1e4068"/>
+              <stop offset="100%" stop-color="#152e4d"/>
+            </linearGradient>
+            <filter id="glow">
+              <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+              <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <radialGradient id="dotGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#c8a96e" stop-opacity=".6"/>
+              <stop offset="100%" stop-color="#c8a96e" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
+
+          <!-- Ocean background (Atlantic side — right) -->
+          <rect width="420" height="580" fill="url(#oceanGrad)"/>
+
+          <!-- Ocean shimmer lines -->
+          <g opacity=".6">
+            <path class="ocean-line" d="M300,30 Q340,50 380,40 Q400,35 420,45"/>
+            <path class="ocean-line" d="M310,80 Q350,95 390,88 Q408,84 420,92"/>
+            <path class="ocean-line" d="M305,140 Q345,155 385,148"/>
+            <path class="ocean-line" d="M302,200 Q342,215 382,208"/>
+            <path class="ocean-line" d="M300,260 Q340,275 380,268"/>
+            <path class="ocean-line" d="M298,320 Q338,335 378,328"/>
+            <path class="ocean-line" d="M296,380 Q336,395 376,388"/>
+            <path class="ocean-line" d="M294,440 Q334,455 370,448"/>
+            <path class="ocean-line" d="M292,500 Q332,515 365,508"/>
+          </g>
+
+          <!-- Pamlico Sound background (left) -->
+          <rect x="0" y="0" width="160" height="580" fill="url(#soundGrad)" opacity=".8"/>
+
+          <!-- OBX Barrier Island — simplified but geographically accurate shape -->
+          <!-- The island runs N to S, narrow, with slight curves. -->
+          <!-- Corolla area: top, slightly wider -->
+          <!-- Narrows at Duck/Southern Shores -->
+          <!-- Widens slightly at Kitty Hawk/KDH -->
+          <!-- Narrows again at Nags Head -->
+          <path class="obx-island" fill="url(#islandGrad)"
+            d="
+              M 210,18
+              C 218,18 228,22 232,30
+              L 238,55
+              C 240,68 242,85 238,100
+              C 234,115 228,125 226,138
+              C 224,152 226,162 224,175
+              C 222,185 218,193 216,205
+              C 214,218 215,228 213,242
+              C 211,255 208,263 207,277
+              C 206,290 207,300 206,313
+              C 205,325 203,334 203,348
+              C 203,360 204,370 203,383
+              C 202,396 200,406 199,420
+              C 198,433 199,444 198,458
+              C 197,470 195,480 194,492
+              C 193,504 193,516 191,528
+              C 190,537 188,545 184,550
+              L 178,558
+              C 173,562 168,562 164,558
+              L 158,550
+              C 155,543 154,534 153,524
+              C 152,512 153,500 153,488
+              C 153,474 152,462 153,448
+              C 154,434 155,422 155,408
+              C 155,394 154,382 154,368
+              C 154,354 155,342 155,328
+              C 155,315 154,304 154,290
+              C 154,277 155,266 155,253
+              C 155,240 154,229 154,216
+              C 154,204 155,193 154,180
+              C 153,168 150,158 149,146
+              C 148,133 149,122 148,109
+              C 147,95 145,82 143,68
+              L 140,42
+              C 139,30 145,20 155,18
+              Z
+            "
+          />
+
+          <!-- Subtle road/route line down the island center -->
+          <path class="route-line"
+            d="M 183,25 C 183,60 184,120 184,180 C 184,240 183,300 182,360 C 181,420 180,480 179,540"
+          />
+
+          <!-- ═══ TOWN ZONES (invisible hover targets) ═══ -->
+          <!-- Corolla -->
+          <rect class="town-zone" x="138" y="18" width="100" height="75" rx="4"/>
+          <!-- Duck -->
+          <rect class="town-zone" x="140" y="95" width="96" height="65" rx="4"/>
+          <!-- Southern Shores -->
+          <rect class="town-zone" x="142" y="162" width="94" height="60" rx="4"/>
+          <!-- Kitty Hawk -->
+          <rect class="town-zone" x="143" y="224" width="93" height="60" rx="4"/>
+          <!-- Kill Devil Hills -->
+          <rect class="town-zone" x="143" y="286" width="93" height="65" rx="4"/>
+          <!-- Nags Head -->
+          <rect class="town-zone" x="142" y="353" width="92" height="130" rx="4"/>
+
+          <!-- ═══ PULSE DOTS ═══ -->
+          <!-- Corolla -->
+          <circle class="pin-dot-outer" cx="183" cy="52" r="7"/>
+          <circle class="pin-dot-inner" cx="183" cy="52" r="3.5" filter="url(#glow)"/>
+          <!-- Duck -->
+          <circle class="pin-dot-outer d2" cx="182" cy="127" r="7"/>
+          <circle class="pin-dot-inner" cx="182" cy="127" r="3.5" filter="url(#glow)"/>
+          <!-- Southern Shores -->
+          <circle class="pin-dot-outer d3" cx="181" cy="192" r="7"/>
+          <circle class="pin-dot-inner" cx="181" cy="192" r="3.5" filter="url(#glow)"/>
+          <!-- Kitty Hawk -->
+          <circle class="pin-dot-outer d4" cx="180" cy="254" r="7"/>
+          <circle class="pin-dot-inner" cx="180" cy="254" r="3.5" filter="url(#glow)"/>
+          <!-- Kill Devil Hills (HQ) -->
+          <circle cx="180" cy="318" r="14" fill="url(#dotGlow)" opacity=".8"/>
+          <circle class="pin-dot-outer d5" cx="180" cy="318" r="7"/>
+          <circle class="pin-dot-inner" cx="180" cy="318" r="4.5" filter="url(#glow)"/>
+          <!-- Nags Head -->
+          <circle class="pin-dot-outer d6" cx="179" cy="410" r="7"/>
+          <circle class="pin-dot-inner" cx="179" cy="410" r="3.5" filter="url(#glow)"/>
+
+          <!-- ═══ TOWN LABELS ═══ -->
+          <!-- Corolla -->
+          <text class="town-label" x="198" y="48">Corolla</text>
+          <text style="fill:rgba(248,245,240,.35);font-size:8px;font-family:'DM Sans',sans-serif;letter-spacing:.06em" x="198" y="59">Northernmost</text>
+
+          <!-- Duck -->
+          <text class="town-label" x="197" y="123">Duck</text>
+
+          <!-- Southern Shores -->
+          <text class="town-label" x="196" y="188">Southern Shores</text>
+
+          <!-- Kitty Hawk -->
+          <text class="town-label" x="196" y="250">Kitty Hawk</text>
+
+          <!-- Kill Devil Hills — HQ badge -->
+          <g filter="url(#glow)">
+            <rect x="195" y="308" width="88" height="16" rx="2" fill="#c8a96e"/>
+            <text class="hq-text" x="199" y="319.5">Kill Devil Hills ★ HQ</text>
+          </g>
+
+          <!-- Nags Head -->
+          <text class="town-label" x="194" y="406">Nags Head</text>
+          <text style="fill:rgba(248,245,240,.35);font-size:8px;font-family:'DM Sans',sans-serif;letter-spacing:.06em" x="194" y="418">Southernmost</text>
+
+          <!-- ═══ WATER LABELS ═══ -->
+          <!-- Atlantic Ocean -->
+          <text class="map-water-label" x="310" y="285" transform="rotate(90, 310, 285)">Atlantic Ocean</text>
+
+          <!-- Pamlico Sound -->
+          <text class="map-water-label" x="15" y="300" transform="rotate(-90, 15, 300)">Pamlico Sound</text>
+
+          <!-- ═══ NORTH ARROW / COMPASS ═══ -->
+          <g transform="translate(365, 48)">
+            <circle cx="0" cy="0" r="18" fill="rgba(10,22,40,.7)" stroke="rgba(200,169,110,.25)" stroke-width="1"/>
+            <!-- N arrow -->
+            <polygon points="0,-12 -4,2 0,-2 4,2" fill="#c8a96e"/>
+            <polygon points="0,2 -4,-2 0,12 4,-2" fill="rgba(248,245,240,.3)"/>
+            <text class="compass-text" x="-3" y="-14" font-size="8" fill="#c8a96e" font-weight="700">N</text>
+          </g>
+
+          <!-- ═══ SCALE BAR ═══ -->
+          <g transform="translate(22, 548)">
+            <line class="scale-line" x1="0" y1="0" x2="60" y2="0"/>
+            <line class="scale-line" x1="0" y1="-4" x2="0" y2="4"/>
+            <line class="scale-line" x1="60" y1="-4" x2="60" y2="4"/>
+            <text class="scale-text" x="14" y="-7">~30 miles</text>
+          </g>
+
+          <!-- ═══ LEGEND BADGE ═══ -->
+          <g transform="translate(22, 24)">
+            <rect width="108" height="36" rx="3" fill="rgba(10,22,40,.75)" stroke="rgba(200,169,110,.2)" stroke-width="1"/>
+            <circle cx="14" cy="18" r="4" fill="#c8a96e" filter="url(#glow)"/>
+            <text style="fill:#f8f5f0;font-size:9px;font-family:'DM Sans',sans-serif;letter-spacing:.08em" x="24" y="14">SERVICE AREA</text>
+            <text style="fill:rgba(248,245,240,.5);font-size:7.5px;font-family:'DM Sans',sans-serif" x="24" y="25">Corolla → Nags Head</text>
+          </g>
+
+        </svg>
       </div>
     </div>
   </div>
