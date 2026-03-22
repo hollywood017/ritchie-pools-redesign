@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+  <title>Spa Services | Ritchie Pools & Spas — Outer Banks, NC</title>
+  <meta name="description" content="Hot tub and spa service, repair, and installation on the Outer Banks. All major brands serviced. Kill Devil Hills, NC."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="css/style.css"/>
+  <style>
+    .svc-section { padding: var(--section-pad) var(--side-pad); border-bottom: 1px solid rgba(255,255,255,.05); }
+    .svc-section:nth-child(even) { background: var(--deep-blue); }
+    .svc-detail-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: center; }
+    .svc-section:nth-child(even) .svc-detail-grid { direction: rtl; }
+    .svc-section:nth-child(even) .svc-detail-grid > * { direction: ltr; }
+    .svc-detail-img { aspect-ratio: 4/3; border-radius: 4px; background: center/cover no-repeat; position: relative; overflow: hidden; }
+    .svc-detail-img-overlay { position: absolute; inset: 0; background: rgba(10,22,40,.2); }
+    .svc-detail-text h2 { margin-bottom: 1.2rem; }
+    .svc-detail-text p { color: var(--text-light); line-height: 1.85; font-size: .93rem; margin-bottom: 1rem; }
+    .svc-list { list-style: none; margin: 1.5rem 0 2rem; display: flex; flex-direction: column; gap: .65rem; }
+    .svc-list li { display: flex; align-items: center; gap: .65rem; font-size: .86rem; color: var(--text-light); }
+    .svc-list li::before { content: ''; width: 6px; height: 6px; background: var(--aqua); border-radius: 50%; flex-shrink: 0; }
+    .brands { padding: var(--section-pad) var(--side-pad); background: var(--deep-blue); text-align: center; }
+    .brands-header { margin-bottom: 3rem; }
+    .brand-tags { display: flex; flex-wrap: wrap; justify-content: center; gap: .8rem; }
+    .brand-tag { background: rgba(255,255,255,.05); border: 1px solid rgba(200,169,110,.15); padding: .6rem 1.4rem; border-radius: 2px; font-size: .78rem; letter-spacing: .1em; color: var(--text-light); transition: border-color .3s, color .3s; }
+    .brand-tag:hover { border-color: var(--gold); color: var(--white); }
+    @media(max-width:860px){
+      .svc-detail-grid { grid-template-columns:1fr; gap:2.5rem; }
+      .svc-section:nth-child(even) .svc-detail-grid { direction:ltr; }
+    }
+  </style>
+</head>
+<body>
+<nav class="site-nav" id="siteNav">
+  <a href="index.html" class="nav-logo">Ritchie Pools & Spas<span>Outer Banks, NC · Est. 2005</span></a>
+  <ul class="nav-center">
+    <li class="has-drop"><a href="pool-services.html">Pool Services</a><ul class="dropdown"><li><a href="pool-services.html">Pool Maintenance</a></li><li><a href="pool-services.html#resurfacing">Pool Resurfacing</a></li><li><a href="pool-services.html#leaks">Leak Detection</a></li><li><a href="pool-services.html#liners">Vinyl Liners</a></li></ul></li>
+    <li class="has-drop"><a href="spa-service.html">Spa Services</a><ul class="dropdown"><li><a href="spa-service.html">Spa Maintenance</a></li><li><a href="spa-service.html#installs">Spa Installation</a></li><li><a href="spa-service.html#repair">Spa Repair</a></li></ul></li>
+    <li class="has-drop"><a href="pool-services.html#products">Products</a><ul class="dropdown"><li><a href="pool-services.html#heating">Pool Heating</a></li><li><a href="pool-services.html#pumps">Energy Efficient Pumps</a></li><li><a href="pool-services.html#salt">Salt Chlorination</a></li><li><a href="pool-services.html#lighting">Pool &amp; Spa Lighting</a></li></ul></li>
+    <li><a href="about.html">About</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li>
+  </ul>
+  <a href="get-a-quote.html" class="nav-cta-btn">Get a Quote</a>
+  <button class="hamburger" id="burger" aria-label="Open menu"><span></span><span></span><span></span></button>
+</nav>
+<div class="mobile-menu" id="mobileMenu">
+  <a href="pool-services.html">Pool Services</a><div class="mob-divider"></div><a href="spa-service.html">Spa Services</a><div class="mob-divider"></div><a href="about.html">About Us</a><div class="mob-divider"></div><a href="gallery.html">Gallery</a><div class="mob-divider"></div><a href="contact.html">Contact</a><div class="mob-divider"></div><a href="get-a-quote.html" class="mob-cta">Get a Free Quote</a>
+</div>
+
+<section class="page-hero">
+  <div class="page-hero-content">
+    <span class="section-label">Spa &amp; Hot Tub Services</span>
+    <h1>We'll Keep Your Spa<br>in Tip-Top Shape</h1>
+    <div class="page-hero-line"></div>
+    <p>Complete spa care from regular maintenance to full installations. We service all major brands and stock most parts on our trucks for same-visit repairs.</p>
+  </div>
+</section>
+
+<!-- MAINTENANCE -->
+<section class="svc-section">
+  <div class="svc-detail-grid">
+    <div class="svc-detail-img reveal-l" style="background-image:url('https://images.unsplash.com/photo-1600334129128-685c5582fd35?w=900&q=80&auto=format&fit=crop')">
+      <div class="svc-detail-img-overlay"></div>
+    </div>
+    <div class="svc-detail-text reveal-r">
+      <span class="section-label">Spa Maintenance</span>
+      <h2 class="section-title">Regular Spa Cleaning &amp; Care</h2>
+      <p>A well-maintained spa is a safe spa. Improper water chemistry in a hot tub is more than just an inconvenience — it's a health risk. Our regular maintenance service keeps your water balanced and your equipment performing at its best.</p>
+      <ul class="svc-list">
+        <li>Complete water chemistry testing and balancing</li>
+        <li>Interior surface cleaning</li>
+        <li>Filter inspection and cleaning</li>
+        <li>Equipment and jet inspection</li>
+        <li>Cover and cabinet inspection</li>
+        <li>Residential, rental, and commercial schedules available</li>
+      </ul>
+      <a href="get-a-quote.html" class="btn-primary">Schedule Spa Maintenance</a>
+    </div>
+  </div>
+</section>
+
+<!-- REPAIR -->
+<section class="svc-section" id="repair">
+  <div class="svc-detail-grid">
+    <div class="svc-detail-img reveal-r" style="background-image:url('https://images.unsplash.com/photo-1540555700478-4be289fbecef?w=900&q=80&auto=format&fit=crop')">
+      <div class="svc-detail-img-overlay"></div>
+    </div>
+    <div class="svc-detail-text reveal-l">
+      <span class="section-label">Spa Repair</span>
+      <h2 class="section-title">Fast, Reliable Spa Repair</h2>
+      <p>We stock almost every part you need on our trucks. That means we diagnose and fix most spa problems in a single visit — no waiting days for parts to arrive. We service all major brands.</p>
+      <ul class="svc-list">
+        <li>Heater repair and replacement</li>
+        <li>Pump and motor service</li>
+        <li>Jet replacement and repair</li>
+        <li>Control board and topside panel diagnostics</li>
+        <li>Leak detection and repair</li>
+        <li>Plumbing and fitting replacement</li>
+        <li>Vinyl shell repair</li>
+      </ul>
+      <a href="get-a-quote.html" class="btn-primary">Schedule a Spa Repair</a>
+    </div>
+  </div>
+</section>
+
+<!-- INSTALLS -->
+<section class="svc-section" id="installs">
+  <div class="svc-detail-grid">
+    <div class="svc-detail-img reveal-l" style="background-image:url('https://images.unsplash.com/photo-1607082349566-187342175e2f?w=900&q=80&auto=format&fit=crop')">
+      <div class="svc-detail-img-overlay"></div>
+    </div>
+    <div class="svc-detail-text reveal-r">
+      <span class="section-label">Complete Spa Installation</span>
+      <h2 class="section-title">From Delivery to First Soak</h2>
+      <p>Adding a hot tub or spa to your property is a smart investment — especially for vacation rentals on the Outer Banks where guests expect resort-level amenities. We handle the full installation process from delivery coordination to final setup.</p>
+      <ul class="svc-list">
+        <li>Site assessment and preparation guidance</li>
+        <li>Safe transport and delivery coordination using our Spa Dolly system</li>
+        <li>Electrical hookup coordination (we work with licensed electricians)</li>
+        <li>Initial fill, chemistry setup, and equipment test</li>
+        <li>Walkthrough and owner education</li>
+        <li>Ongoing maintenance packages available post-install</li>
+      </ul>
+      <a href="get-a-quote.html" class="btn-primary">Get an Installation Quote</a>
+    </div>
+  </div>
+</section>
+
+<!-- BRANDS -->
+<section class="brands">
+  <div class="brands-header reveal">
+    <span class="section-label">What We Service</span>
+    <h2 class="section-title">All Major Spa Brands</h2>
+    <p style="color:var(--text-light);font-size:.93rem;margin-top:.8rem;max-width:500px;margin-left:auto;margin-right:auto;">We carry parts for virtually every major hot tub manufacturer — and we stock them on our trucks so you're not waiting for a parts order.</p>
+  </div>
+  <div class="brand-tags">
+    <span class="brand-tag" style="border-color:var(--gold);color:var(--gold)">Aspen Spas ★ Licensed Dealer</span>
+    <span class="brand-tag">Jacuzzi</span><span class="brand-tag">Hot Spring</span><span class="brand-tag">Caldera</span>
+    <span class="brand-tag">Sundance</span><span class="brand-tag">Bullfrog</span><span class="brand-tag">Marquis</span>
+    <span class="brand-tag">Master Spas</span><span class="brand-tag">Dimension One</span><span class="brand-tag">Arctic Spas</span>
+    <span class="brand-tag">Hydropool</span><span class="brand-tag">Lifesmart</span><span class="brand-tag">Coleman</span>
+    <span class="brand-tag">Intex</span><span class="brand-tag">Gatsby</span><span class="brand-tag">And Many More</span>
+  </div>
+  <p style="margin-top:2rem;font-size:.82rem;color:var(--text-light)">Don't see your brand? <a href="contact.html" style="color:var(--gold);text-decoration:none">Call us</a> — chances are we service it.</p>
+</section>
+
+<section class="cta-band">
+  <div class="reveal">
+    <h2>Spa Issues? We Fix It Fast.</h2>
+    <p>Call or request a quote and we'll diagnose your spa problem and get it running again.</p>
+    <div class="cta-actions">
+      <a href="tel:2522021509" class="btn-white">Call (252) 202-1509</a>
+      <a href="get-a-quote.html" class="btn-outline-white">Request a Quote</a>
+    </div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="footer-grid">
+    <div class="footer-brand"><a href="index.html" class="nav-logo">Ritchie Pools & Spas<span>Outer Banks, NC · Est. 2005</span></a><p>Family owned and operated by Tom Ritchie. Licensed Aspen Spas dealer. Serving the Outer Banks from Corolla to Nags Head since 2005.</p><a href="tel:2522021509" class="footer-phone"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.1 1.19 2 2 0 012.08 1h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.91 8.09a16 16 0 006 6l.51-.46a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 16.92z"/></svg>(252) 202-1509</a></div>
+    <div class="footer-col"><h4>Pool Services</h4><ul><li><a href="pool-services.html">Pool Maintenance</a></li><li><a href="pool-services.html#resurfacing">Pool Resurfacing</a></li><li><a href="pool-services.html#leaks">Leak Detection</a></li><li><a href="pool-services.html#liners">Vinyl Liners</a></li></ul></div>
+    <div class="footer-col"><h4>Spa Services</h4><ul><li><a href="spa-service.html">Spa Maintenance</a></li><li><a href="#installs">Spa Installation</a></li><li><a href="#repair">Spa Repair</a></li></ul></div>
+    <div class="footer-col"><h4>Company</h4><ul><li><a href="about.html">About Us</a></li><li><a href="gallery.html">Gallery</a></li><li><a href="contact.html">Contact</a></li><li><a href="get-a-quote.html">Get a Quote</a></li></ul></div>
+  </div>
+  <div class="footer-bottom"><p>© 2026 Ritchie Pools and Spas · 700 W Lake Dr, Kill Devil Hills, NC 27948 · <a href="tel:2522021509">(252) 202-1509</a></p><span class="bbb-badge">BBB A+ Accredited</span></div>
+</footer>
+<script src="js/main.js"></script>
+</body>
+</html>
