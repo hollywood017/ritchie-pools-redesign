@@ -29,8 +29,69 @@
     .info-value { font-size: .9rem; color: var(--white); line-height: 1.5; }
     .info-value a { color: var(--white); text-decoration: none; transition: color .3s; }
     .info-value a:hover { color: var(--gold); }
-    .map-embed { margin-top: 2rem; border-radius: 4px; overflow: hidden; border: 1px solid rgba(200,169,110,.12); }
-    .map-embed iframe { width: 100%; height: 240px; border: none; filter: invert(90%) hue-rotate(180deg); }
+    /* OBX SVG map replaces Google Maps iframe */
+    .obx-map-contact {
+      margin-top: 2rem;
+      border-radius: 4px;
+      overflow: hidden;
+      border: 1px solid rgba(200,169,110,.15);
+      background: linear-gradient(135deg, #071526 0%, #0d2140 100%);
+      box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+    .obx-map-contact svg { display: block; width: 100%; height: auto; }
+    .cmap-water-label {
+      font-family: var(--font-display);
+      font-style: italic;
+      fill: rgba(57,192,224,.3);
+      font-size: 9px;
+      letter-spacing: 2px;
+    }
+    .cmap-island { fill: url(#cIslandGrad); stroke: rgba(57,192,224,.4); stroke-width: 1.5; }
+    .cmap-town-label {
+      font-family: 'DM Sans', sans-serif;
+      font-size: 9.5px;
+      font-weight: 500;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      fill: #f8f5f0;
+      pointer-events: none;
+    }
+    .cmap-pin-outer {
+      fill: none;
+      stroke: #c8a96e;
+      stroke-width: 1.5;
+      opacity: .7;
+      animation: cmapPulse 2.5s ease-in-out infinite;
+    }
+    .cmap-pin-inner { fill: #c8a96e; }
+    .d2 { animation-delay: .4s; }
+    .d3 { animation-delay: .8s; }
+    .d4 { animation-delay: 1.2s; }
+    .d5 { animation-delay: 1.6s; }
+    .d6 { animation-delay: 2.0s; }
+    @keyframes cmapPulse {
+      0%,100% { r: 5; opacity: .5; }
+      50% { r: 9; opacity: 0; }
+    }
+    .cmap-route {
+      stroke: rgba(57,192,224,.3);
+      stroke-width: 1.5;
+      stroke-dasharray: 4 4;
+      fill: none;
+      animation: cmapDash 20s linear infinite;
+    }
+    @keyframes cmapDash { to { stroke-dashoffset: -100; } }
+    .cmap-ocean {
+      stroke: rgba(57,192,224,.07);
+      stroke-width: 1;
+      fill: none;
+      animation: cmapShimmer 6s ease-in-out infinite;
+    }
+    .cmap-ocean:nth-of-type(2) { animation-delay: -2s; }
+    .cmap-ocean:nth-of-type(3) { animation-delay: -4s; }
+    @keyframes cmapShimmer {
+      0%,100% { opacity:.3; } 50% { opacity:.8; }
+    }
     /* Contact form */
     .contact-form-wrap {
       background: var(--deep-blue); border: 1px solid rgba(200,169,110,.12);
@@ -109,11 +170,146 @@
           <div><div class="info-label">Service Area</div><div class="info-value">Corolla · Duck · Southern Shores<br>Kitty Hawk · Kill Devil Hills · Nags Head</div></div>
         </div>
       </div>
-      <div class="map-embed">
-        <iframe
-          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3239.123!2d-76.2169827!3d35.6204769!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89a51e0172c9ed17%3A0x55828058e9f6c143!2sRitchie%20Pools%20and%20Spas!5e0!3m2!1sen!2sus!4v1"
-          allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-        </iframe>
+      <div class="obx-map-contact">
+        <svg viewBox="0 0 380 420" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Outer Banks service area map from Corolla to Nags Head">
+          <defs>
+            <linearGradient id="cOceanGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#071018"/>
+              <stop offset="100%" stop-color="#0a1e35"/>
+            </linearGradient>
+            <linearGradient id="cIslandGrad" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0%" stop-color="#1e4068"/>
+              <stop offset="100%" stop-color="#152e4d"/>
+            </linearGradient>
+            <radialGradient id="cKdhGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#c8a96e" stop-opacity=".5"/>
+              <stop offset="100%" stop-color="#c8a96e" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="cGlow">
+              <feGaussianBlur stdDeviation="2" result="blur"/>
+              <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+          </defs>
+
+          <!-- Background ocean -->
+          <rect width="380" height="420" fill="url(#cOceanGrad)"/>
+
+          <!-- Ocean shimmer lines (Atlantic side, right) -->
+          <path class="cmap-ocean" d="M255,20 Q295,32 335,26 Q355,22 378,28"/>
+          <path class="cmap-ocean" d="M252,65 Q292,77 332,71"/>
+          <path class="cmap-ocean" d="M250,110 Q290,122 330,116"/>
+          <path class="cmap-ocean" d="M248,155 Q288,167 328,161"/>
+          <path class="cmap-ocean" d="M246,200 Q286,212 326,206"/>
+          <path class="cmap-ocean" d="M244,245 Q284,257 324,251"/>
+          <path class="cmap-ocean" d="M242,290 Q282,302 322,296"/>
+          <path class="cmap-ocean" d="M240,335 Q280,347 318,341"/>
+          <path class="cmap-ocean" d="M238,380 Q278,392 314,386"/>
+
+          <!-- Pamlico Sound (left side subtle overlay) -->
+          <rect x="0" y="0" width="120" height="420" fill="#071018" opacity=".5"/>
+
+          <!-- OBX Barrier Island shape — horizontal layout (N at top, S at bottom)
+               Island runs north to south down the center, narrow barrier strip
+               Corolla top, narrows at Duck/Southern Shores, widens at KDH, tapers to Nags Head -->
+          <path class="cmap-island"
+            d="
+              M 185,14
+              C 192,14 200,17 203,24
+              L 208,44
+              C 210,56 211,70 208,83
+              C 205,94 200,103 198,114
+              C 196,125 197,134 196,145
+              C 195,155 192,163 191,173
+              C 190,183 191,192 190,203
+              C 189,213 187,221 186,232
+              C 185,242 186,251 185,262
+              C 184,272 183,281 183,292
+              C 183,302 184,311 183,322
+              C 182,332 181,341 181,352
+              C 181,362 182,370 181,380
+              C 180,389 178,396 175,401
+              L 170,407
+              C 166,411 161,411 158,407
+              L 153,401
+              C 150,394 149,386 149,376
+              C 149,365 150,355 150,344
+              C 150,333 149,323 150,312
+              C 151,301 152,291 152,280
+              C 152,270 151,260 151,249
+              C 151,239 152,230 152,219
+              C 152,209 151,199 151,189
+              C 151,179 152,170 151,160
+              C 150,150 148,141 147,131
+              C 146,120 147,110 146,99
+              C 145,87 143,76 141,64
+              L 138,40
+              C 137,30 142,19 151,16
+              Z
+            "
+          />
+
+          <!-- Animated dashed route line down island center -->
+          <path class="cmap-route" d="M 168,20 C 168,55 169,110 169,165 C 169,220 168,275 167,330 C 166,365 165,390 164,408"/>
+
+          <!-- ═══ PULSE DOTS ═══ -->
+          <!-- Corolla -->
+          <circle class="cmap-pin-outer" cx="168" cy="38" r="5"/>
+          <circle class="cmap-pin-inner" cx="168" cy="38" r="2.5" filter="url(#cGlow)"/>
+          <!-- Duck -->
+          <circle class="cmap-pin-outer d2" cx="168" cy="93" r="5"/>
+          <circle class="cmap-pin-inner" cx="168" cy="93" r="2.5" filter="url(#cGlow)"/>
+          <!-- Southern Shores -->
+          <circle class="cmap-pin-outer d3" cx="167" cy="140" r="5"/>
+          <circle class="cmap-pin-inner" cx="167" cy="140" r="2.5" filter="url(#cGlow)"/>
+          <!-- Kitty Hawk -->
+          <circle class="cmap-pin-outer d4" cx="167" cy="188" r="5"/>
+          <circle class="cmap-pin-inner" cx="167" cy="188" r="2.5" filter="url(#cGlow)"/>
+          <!-- Kill Devil Hills (HQ — larger glow) -->
+          <circle cx="166" cy="236" r="12" fill="url(#cKdhGlow)" opacity=".9"/>
+          <circle class="cmap-pin-outer d5" cx="166" cy="236" r="5"/>
+          <circle class="cmap-pin-inner" cx="166" cy="236" r="3.5" filter="url(#cGlow)"/>
+          <!-- Nags Head -->
+          <circle class="cmap-pin-outer d6" cx="165" cy="300" r="5"/>
+          <circle class="cmap-pin-inner" cx="165" cy="300" r="2.5" filter="url(#cGlow)"/>
+
+          <!-- ═══ TOWN LABELS ═══ -->
+          <text class="cmap-town-label" x="178" y="34">Corolla</text>
+          <text style="fill:rgba(248,245,240,.3);font-size:7px;font-family:'DM Sans',sans-serif" x="178" y="43">Northernmost</text>
+
+          <text class="cmap-town-label" x="178" y="90">Duck</text>
+
+          <text class="cmap-town-label" x="178" y="137">Southern Shores</text>
+
+          <text class="cmap-town-label" x="178" y="184">Kitty Hawk</text>
+
+          <!-- KDH badge -->
+          <rect x="178" y="228" width="100" height="17" rx="2" fill="#c8a96e" filter="url(#cGlow)"/>
+          <text style="fill:#0a1628;font-size:7px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;font-family:'DM Sans',sans-serif" x="182" y="239.5">Kill Devil Hills ★ HQ</text>
+
+          <text class="cmap-town-label" x="177" y="297">Nags Head</text>
+          <text style="fill:rgba(248,245,240,.3);font-size:7px;font-family:'DM Sans',sans-serif" x="177" y="306">Southernmost</text>
+
+          <!-- ═══ WATER LABELS ═══ -->
+          <text class="cmap-water-label" x="278" y="210" transform="rotate(90,278,210)">Atlantic Ocean</text>
+          <text class="cmap-water-label" x="12" y="220" transform="rotate(-90,12,220)">Pamlico Sound</text>
+
+          <!-- Compass rose -->
+          <g transform="translate(338,28)">
+            <circle cx="0" cy="0" r="15" fill="rgba(10,22,40,.75)" stroke="rgba(200,169,110,.25)" stroke-width="1"/>
+            <polygon points="0,-10 -3,2 0,-1 3,2" fill="#c8a96e"/>
+            <polygon points="0,1 -3,-1 0,10 3,-1" fill="rgba(248,245,240,.25)"/>
+            <text style="fill:#c8a96e;font-size:7px;font-weight:700;font-family:'DM Sans',sans-serif" x="-2.5" y="-12">N</text>
+          </g>
+
+          <!-- Service area legend -->
+          <g transform="translate(10,12)">
+            <rect width="100" height="30" rx="2" fill="rgba(10,22,40,.8)" stroke="rgba(200,169,110,.2)" stroke-width="1"/>
+            <circle cx="12" cy="15" r="3.5" fill="#c8a96e" filter="url(#cGlow)"/>
+            <text style="fill:#f8f5f0;font-size:7.5px;font-family:'DM Sans',sans-serif;letter-spacing:.07em" x="20" y="11">SERVICE AREA</text>
+            <text style="fill:rgba(248,245,240,.45);font-size:6.5px;font-family:'DM Sans',sans-serif" x="20" y="21">Corolla → Nags Head</text>
+          </g>
+
+        </svg>
       </div>
     </div>
     <div class="contact-form-wrap reveal-r">
