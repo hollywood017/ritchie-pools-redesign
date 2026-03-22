@@ -136,6 +136,8 @@ a  { color: inherit; }
   justify-content: space-between;
   transition: background .4s, padding .4s, border-color .4s;
   border-bottom: 1px solid transparent;
+  /* Prevent nav items from ever wrapping */
+  white-space: nowrap;
 }
 .site-nav.scrolled {
   background: rgba(10,22,40,.93);
@@ -162,7 +164,7 @@ a  { color: inherit; }
   color: var(--gold);
   font-weight: 400;
 }
-.nav-center { display: flex; gap: 2.2rem; list-style: none; }
+.nav-center { display: flex; gap: 2.2rem; list-style: none; flex-shrink: 0; }
 .nav-center a {
   font-size: 0.74rem;
   letter-spacing: 0.12em;
@@ -485,14 +487,26 @@ a  { color: inherit; }
 .google-badge .g-count { font-size: 0.78rem; color: var(--text-light); }
 .google-badge .g-label { font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold); }
 
+/* ── OVERFLOW FIX — prevents horizontal scroll on all pages ── */
+html, body { overflow-x: hidden; }
+
 /* ── RESPONSIVE ── */
-@media (max-width: 1024px) {
-  .nav-center { gap: 1.6rem; }
+@media (max-width: 1180px) {
+  .nav-center { gap: 1.2rem; }
+  .nav-center a { font-size: 0.68rem; letter-spacing: 0.08em; }
+  .nav-logo { font-size: 1.1rem; }
 }
-@media (max-width: 860px) {
+@media (max-width: 1024px) {
+  .nav-center { gap: 0.9rem; }
+  .nav-cta-btn { padding: 0.45rem 1rem; font-size: 0.68rem; }
+}
+/* Hide nav links and show hamburger at 940px so nav never wraps */
+@media (max-width: 940px) {
   .nav-center, .nav-cta-btn { display: none; }
   .hamburger { display: flex; }
   .mobile-menu { display: flex; }
+}
+@media (max-width: 860px) {
   .footer-grid { grid-template-columns: 1fr 1fr; gap: 2.5rem; }
 }
 @media (max-width: 520px) {

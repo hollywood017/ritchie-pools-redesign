@@ -66,10 +66,13 @@
     }
     .photo-notice strong { color: var(--gold); }
     @media(max-width:860px){
-      .gallery-grid { columns: 2; }
+      .gallery-grid { columns: 2; column-gap: .75rem; }
+      .gallery-item { margin-bottom: .75rem; }
     }
     @media(max-width:520px){
       .gallery-grid { columns: 1; }
+      .filter-bar { gap: .4rem; }
+      .filter-btn { font-size: .62rem; padding: .4rem .9rem; }
     }
   </style>
 </head>
