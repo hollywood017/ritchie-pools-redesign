@@ -210,7 +210,8 @@ a  { color: inherit; }
   transform: translateX(-50%) translateY(6px);
   box-shadow: 0 20px 50px rgba(0,0,0,.5);
 }
-.has-drop:hover .dropdown {
+.has-drop:hover .dropdown,
+.has-drop.open .dropdown {
   opacity: 1;
   pointer-events: all;
   transform: translateX(-50%) translateY(0);

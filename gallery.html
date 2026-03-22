@@ -102,11 +102,6 @@
 </section>
 
 <section class="gallery-section">
-  <div class="photo-notice">
-    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="color:var(--gold);flex-shrink:0;margin-top:1px"><circle cx="12" cy="12" r="10"/><path d="M12 8v4M12 16h.01"/></svg>
-    <span><strong>Note for launch:</strong> Replace these placeholder images with actual photos from Ritchie's own work. The Yelp profile has 77 existing photos — these are a strong starting point. The gallery supports click-to-enlarge and filter tabs automatically.</span>
-  </div>
-
   <div class="filter-bar">
     <button class="filter-btn active" data-filter="all">All Work</button>
     <button class="filter-btn" data-filter="pool">Pool Work</button>
@@ -115,56 +110,19 @@
     <button class="filter-btn" data-filter="install">Installations</button>
   </div>
 
+  <!-- GALLERY PHOTOS: Add images to the /images/ folder and list them below.
+       Format: <div class="gallery-item" data-cat="pool|spa|before-after|install">
+                 <img src="images/your-photo.jpg" alt="Description" loading="lazy"/>
+                 <div class="gallery-overlay"><span class="gallery-tag">Tag Label</span></div>
+               </div>
+  -->
   <div class="gallery-grid" id="galleryGrid">
-    <!-- Pool photos -->
-    <div class="gallery-item" data-cat="pool">
-      <img src="https://images.pexels.com/photos/261327/pexels-photo-261327.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Beachfront pool OBX" loading="lazy"/>
-      <div class="gallery-overlay"><span class="gallery-tag">Pool Maintenance</span></div>
-    </div>
-    <div class="gallery-item" data-cat="spa">
-      <img src="https://images.pexels.com/photos/3851263/pexels-photo-3851263.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Hot tub spa service" loading="lazy"/>
-      <div class="gallery-overlay"><span class="gallery-tag">Spa Service</span></div>
-    </div>
-    <div class="gallery-item" data-cat="pool">
-      <img src="https://images.pexels.com/photos/261101/pexels-photo-261101.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Resort pool resurfacing" loading="lazy"/>
-      <div class="gallery-overlay"><span class="gallery-tag">Pool Resurfacing</span></div>
-    </div>
-    <div class="gallery-item" data-cat="install">
-      <img src="https://images.pexels.com/photos/5563469/pexels-photo-5563469.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Luxury pool installation" loading="lazy"/>
-      <div class="gallery-overlay"><span class="gallery-tag">Installation</span></div>
-    </div>
-    <div class="gallery-item" data-cat="pool">
-      <img src="https://images.pexels.com/photos/261124/pexels-photo-261124.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Pool lighting and maintenance" loading="lazy"/>
-      <div class="gallery-overlay"><span class="gallery-tag">Pool Cleaning</span></div>
-    </div>
-    <div class="gallery-item" data-cat="spa">
-      <img src="https://images.pexels.com/photos/7222170/pexels-photo-7222170.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Indoor spa pool service" loading="lazy"/>
-      <div class="gallery-overlay"><span class="gallery-tag">Spa Installation</span></div>
-    </div>
-    <div class="gallery-item" data-cat="before-after">
-      <img src="https://images.pexels.com/photos/6858673/pexels-photo-6858673.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Pool before service" loading="lazy"/>
-      <div class="gallery-overlay"><span class="gallery-tag">Before Service</span></div>
-    </div>
-    <div class="gallery-item" data-cat="before-after">
-      <img src="https://images.pexels.com/photos/261124/pexels-photo-261124.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Pool after resurfacing" loading="lazy"/>
-      <div class="gallery-overlay"><span class="gallery-tag">After Resurfacing</span></div>
-    </div>
-    <div class="gallery-item" data-cat="pool">
-      <img src="https://images.pexels.com/photos/261101/pexels-photo-261101.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Vacation rental pool OBX" loading="lazy"/>
-      <div class="gallery-overlay"><span class="gallery-tag">Vacation Rental Pool</span></div>
-    </div>
-    <div class="gallery-item" data-cat="install">
-      <img src="https://images.pexels.com/photos/261327/pexels-photo-261327.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Pool installation complete" loading="lazy"/>
-      <div class="gallery-overlay"><span class="gallery-tag">Pool Install</span></div>
-    </div>
-    <div class="gallery-item" data-cat="pool">
-      <img src="https://images.pexels.com/photos/5563469/pexels-photo-5563469.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Luxury pool service" loading="lazy"/>
-      <div class="gallery-overlay"><span class="gallery-tag">Pool Service</span></div>
-    </div>
-    <div class="gallery-item" data-cat="spa">
-      <img src="https://images.pexels.com/photos/3851263/pexels-photo-3851263.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Hot tub maintenance" loading="lazy"/>
-      <div class="gallery-overlay"><span class="gallery-tag">Hot Tub Service</span></div>
-    </div>
+    <!-- Photos will be added here once supplied -->
+  </div>
+  <div style="text-align:center;padding:4rem 0;color:var(--text-light);font-size:.9rem;">
+    <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1" style="color:rgba(200,169,110,.3);margin:0 auto 1rem;display:block"><rect x="3" y="3" width="18" height="18" rx="2"/><circle cx="8.5" cy="8.5" r="1.5"/><polyline points="21 15 16 10 5 21"/></svg>
+    <p style="color:rgba(200,169,110,.5);font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;">Photos Coming Soon</p>
+    <p style="margin-top:.5rem">We&rsquo;re collecting our best work to showcase here.<br>Check back soon.</p>
   </div>
 </section>
 
