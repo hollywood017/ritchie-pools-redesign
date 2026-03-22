@@ -195,23 +195,32 @@ a  { color: inherit; }
 }
 .dropdown {
   position: absolute;
-  top: calc(100% + 14px);
+  top: 100%; /* flush to nav bottom — no gap for mouse to fall through */
   left: 50%;
-  transform: translateX(-50%);
+  transform: translateX(-50%) translateY(6px);
   background: var(--deep-blue);
   border: 1px solid rgba(200,169,110,.15);
   border-radius: 3px;
   min-width: 200px;
   list-style: none;
-  padding: 0.5rem 0;
+  padding: 0.8rem 0 0.5rem; /* top padding creates invisible bridge over the gap */
+  margin-top: 0;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .25s, transform .25s;
-  transform: translateX(-50%) translateY(6px);
+  transition: opacity .2s ease, transform .2s ease;
   box-shadow: 0 20px 50px rgba(0,0,0,.5);
 }
-.has-drop:hover .dropdown,
-.has-drop.open .dropdown {
+/* Invisible pseudo-element bridges the gap between nav link and dropdown */
+.has-drop::after {
+  content: '';
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  height: 12px; /* covers the visual gap so mouse stays in hover zone */
+  background: transparent;
+}
+.has-drop:hover .dropdown {
   opacity: 1;
   pointer-events: all;
   transform: translateX(-50%) translateY(0);
