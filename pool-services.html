@@ -18,10 +18,16 @@
     .svc-section:nth-child(even) .svc-detail-grid > * { direction: ltr; }
     .svc-detail-img {
       aspect-ratio: 4/3; border-radius: 4px;
-      background: center/cover no-repeat;
       position: relative; overflow: hidden;
+      background: var(--deep-blue);
     }
-    .svc-detail-img-overlay { position: absolute; inset: 0; background: rgba(10,22,40,.2); }
+    .svc-detail-img img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .svc-detail-img-overlay { position: absolute; inset: 0; background: rgba(10,22,40,.25); z-index: 1; }
     .svc-detail-text h2 { margin-bottom: 1.2rem; }
     .svc-detail-text p { color: var(--text-light); line-height: 1.85; font-size: .93rem; margin-bottom: 1rem; }
     .svc-list { list-style: none; margin: 1.5rem 0 2rem; display: flex; flex-direction: column; gap: .65rem; }
@@ -87,7 +93,8 @@
 <!-- MAINTENANCE -->
 <section class="svc-section">
   <div class="svc-detail-grid">
-    <div class="svc-detail-img reveal-l" style="background-image:url('https://source.unsplash.com/900x675/?swimming-pool-cleaning,pool-maintenance,pool-water')">
+    <div class="svc-detail-img reveal-l">
+      <img src="https://images.pexels.com/photos/261327/pexels-photo-261327.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Pool maintenance service" loading="lazy"/>
       <div class="svc-detail-img-overlay"></div>
     </div>
     <div class="svc-detail-text reveal-r">
@@ -108,7 +115,8 @@
 <!-- RESURFACING -->
 <section class="svc-section" id="resurfacing">
   <div class="svc-detail-grid">
-    <div class="svc-detail-img reveal-r" style="background-image:url('https://source.unsplash.com/900x675/?pool-resurfacing,pool-renovation,swimming-pool-construction')">
+    <div class="svc-detail-img reveal-r">
+      <img src="https://images.pexels.com/photos/2085831/pexels-photo-2085831.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Pool resurfacing" loading="lazy"/>
       <div class="svc-detail-img-overlay"></div>
     </div>
     <div class="svc-detail-text reveal-l">
@@ -130,7 +138,8 @@
 <!-- LEAKS -->
 <section class="svc-section" id="leaks">
   <div class="svc-detail-grid">
-    <div class="svc-detail-img reveal-l" style="background-image:url('https://source.unsplash.com/900x675/?pool-repair,swimming-pool,pool-pipes')">
+    <div class="svc-detail-img reveal-l">
+      <img src="https://images.pexels.com/photos/3990359/pexels-photo-3990359.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Pool repair and leak detection" loading="lazy"/>
       <div class="svc-detail-img-overlay"></div>
     </div>
     <div class="svc-detail-text reveal-r">
@@ -152,7 +161,8 @@
 <!-- VINYL LINERS -->
 <section class="svc-section" id="liners">
   <div class="svc-detail-grid">
-    <div class="svc-detail-img reveal-r" style="background-image:url('https://source.unsplash.com/900x675/?swimming-pool,pool-liner,blue-pool-water')">
+    <div class="svc-detail-img reveal-r">
+      <img src="https://images.pexels.com/photos/1660993/pexels-photo-1660993.jpeg?auto=compress&cs=tinysrgb&w=900" alt="Swimming pool with blue vinyl liner" loading="lazy"/>
       <div class="svc-detail-img-overlay"></div>
     </div>
     <div class="svc-detail-text reveal-l">
